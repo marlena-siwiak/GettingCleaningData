@@ -18,6 +18,14 @@ y\_train.txt
 
 y\_test.txt
 
+### Dependencies
+
+The run_analysis.R package depends on two R packages:
+
+reshape2	(tested with version 2_1.4)
+
+plyr (tested with version 1.8.1)
+
 ### Merging datasets, modifying variables
 
 
