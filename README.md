@@ -1,7 +1,8 @@
 Getting and Cleaning Data Project
 =========================
 
-===Input Files===
+Input Files
+=====
 
 To obtain a Tidy\_Dataset.txt run the run_analysis.R script with Samsung data placed in the working directory.
 The script loads the train and test datasets as well as datasets on subjects and activity ids, and features names. The required input files are:
