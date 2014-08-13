@@ -32,7 +32,7 @@ collist <- grep("[Mm]ean|std", names(X_merged), value=T)
 X_selected<-subset(X_merged, select=collist)
 
 # Name the activities in the data set using descriptive names
-levels(activity_merged$V1)<-c("walking","walking_upstairs","walking_downstairs","sitting","standing","lying")
+levels(activity_merged$V1)<-c("walking","walking_upstairs","walking_downstairs","sitting","standing","laying")
 activity<-activity_merged$V1
 X_selected <- cbind(X_selected, activity)
 
@@ -45,10 +45,10 @@ newnames <- sub("\\(\\)","", names(X_selected))
 newnames <- sub("mean", "Mean", newnames)
 newnames <- sub("std", "Std", newnames)
 newnames <- gsub("-", "", newnames)
-newnames <- sub("angle\\(", "", newnames)
+newnames <- sub("angle\\(", "AngleOf", newnames)
 newnames <- gsub("\\)", "", newnames)
 newnames <- sub("gravity", "Gravity", newnames)
-newnames <- sub(",", "PLUS", newnames)
+newnames <- sub(",", "And", newnames)
 newnames <- sub("Acc", "Acceleration", newnames)
 newnames <- sub("Gyro", "Gyroscope", newnames)
 newnames <- sub("Mag", "Magnitude", newnames)
@@ -61,5 +61,5 @@ X_melted <- melt(X_selected, id=c("activity", "subject"), measure.vars=names(X_s
 X_tidy <- ddply(X_melted, .(activity, subject, variable), summarize, mean = mean(value))
 
 # Write table
-write.table(X_tidy, file="Tidy_Dataset.tsv", na="", sep="\t",  row.names=FALSE, quote=FALSE)
+write.table(X_tidy, file="Tidy_Dataset.txt", na="", sep="\t",  row.names=FALSE, quote=FALSE)
 
